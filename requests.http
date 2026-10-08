@@ -1,0 +1,49 @@
+### List
+GET http://localhost:3000/api/internships?page=1&limit=2
+
+### Detail
+GET http://localhost:3000/api/internships/INT-101
+
+### Not found (404)
+GET http://localhost:3000/api/internships/INT-999
+
+### Create (201)
+POST http://localhost:3000/api/internships
+Content-Type: application/json
+
+{
+  "title": "Backend Intern",
+  "domain": "Full Stack Development",
+  "mode": "Remote",
+  "location": "India",
+  "skills": ["Node.js", "Express", "SQLite"],
+  "openings": 2
+}
+
+### Create with bad data (400)
+POST http://localhost:3000/api/internships
+Content-Type: application/json
+
+{ "title": "A", "mode": "Anywhere", "skills": [], "openings": -1 }
+
+### Update (PUT)
+PUT http://localhost:3000/api/internships/INT-101
+Content-Type: application/json
+
+{
+  "title": "Frontend Developer Intern",
+  "domain": "Full Stack Development",
+  "mode": "Hybrid",
+  "location": "Indore",
+  "skills": ["HTML", "CSS", "JavaScript"],
+  "openings": 4
+}
+
+### Update one field (PATCH)
+PATCH http://localhost:3000/api/internships/INT-101
+Content-Type: application/json
+
+{ "openings": 5 }
+
+### Delete (204)
+DELETE http://localhost:3000/api/internships/INT-105
